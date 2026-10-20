@@ -1,0 +1,38 @@
+{
+  "name": "codeflow-map",
+  "displayName": "CodeFlow - Mapa de funciones",
+  "description": "Visualiza funciones, métodos y clases PHP/JavaScript y navega a sus archivos.",
+  "version": "0.3.6",
+  "publisher": "local-codeflow",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Visualization", "Other"],
+  "main": "./extension.js",
+  "activationEvents": ["onCommand:codeflow.open", "onCommand:codeflow.refresh"],
+  "contributes": {
+    "commands": [
+      {"command": "codeflow.open", "title": "CodeFlow: Abrir mapa de funciones"},
+      {"command": "codeflow.refresh", "title": "CodeFlow: Actualizar mapa"}
+    ],
+    "configuration": {
+      "title": "CodeFlow",
+      "properties": {
+        "codeflow.maxFiles": {
+          "type": "number",
+          "default": 1500,
+          "minimum": 1,
+          "description": "Límite de archivos por análisis."
+        },
+        "codeflow.maxNodes": {
+          "type": "number",
+          "default": 700,
+          "minimum": 1,
+          "description": "Límite de nodos dibujados."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "check": "node --check extension.js && node --check analyzer.js && node --check media/main.js"
+  }
+}
