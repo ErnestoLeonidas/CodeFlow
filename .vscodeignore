@@ -1,0 +1,6 @@
+ejemplo/**
+images/icon.svg
+.git/**
+.gitignore
+.vscode/**
+*.vsix

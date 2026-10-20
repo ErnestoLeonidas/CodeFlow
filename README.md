@@ -87,3 +87,14 @@ Abre un proyecto y ejecuta `CodeFlow: Abrir mapa de funciones` desde la paleta d
 ## Limitaciones
 
 El parser PHP/JS es heurístico, no un analizador semántico completo. En grafos muy densos no siempre es posible evitar todos los cruces de cables, pero el enrutado evita que dos cables compartan el mismo tramo.
+
+## Ejemplo: `ejemplo/warhammer40k`
+
+Proyecto pequeño y completo (9 clases PHP, funciones sueltas y un visor JS) para probar el mapa: abre la carpeta `ejemplo/warhammer40k` en VS Code y ejecuta **CodeFlow: Abrir mapa de funciones**.
+
+Una batalla entre Marines Espaciales y Orkos que ejercita cada tipo de relación:
+- **Herencia** (`extends`): `MarineEspacial` y `GuerreroOrko` → `Unidad`.
+- **Llamadas estáticas** (`Dados::`, `self::`, `FabricaUnidades::`) y **propiedades tipadas** (`Combate` → `Registro` por constructor y `@var`).
+- **`new Clase()`** dentro de métodos (`Cruzada` crea `Registro` y `Combate`; las fábricas crean `Ejercito`, `MarineEspacial`, `GuerreroOrko`).
+- **`require_once`** entre archivos y funciones sueltas (`batalla.php`: `iniciarCruzada`, `prepararEjercitos`, `imprimirInforme`).
+- **JavaScript** (`oraculo.js`): clase `Oraculo` y funciones auxiliares; `cargarCronica` queda en "Sin conexiones" a propósito.
